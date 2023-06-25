@@ -17,10 +17,19 @@ export class App extends Component {
     }));
   };
 
-  totalFeedback = () => {
-    let total = this.state.good + this.state.neutral + this.state.bad;
+  // totalFeedback = () => {
+  //   let total = this.state.good + this.state.neutral + this.state.bad;
+  //   return total;
+  // };
+
+  totalFeedback = () =>{
+    let total = Object.values(this.state).reduce((total, number)=>{
+      return total+number;
+    }, 0);
     return total;
   };
+
+
 
   positiveFeedback = () => {
     if (this.totalFeedback() === 0) {
